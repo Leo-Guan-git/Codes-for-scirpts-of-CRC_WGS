@@ -1,0 +1,29 @@
+#!/bin/bash
+#environment for the python script
+#use system python (/share/app/python-2.7.10/bin/python) (2.7.10)
+source /opt/gridengine/default/common/settings.sh
+#export LD_LIBRARY_PATH=/ldfssz1/MGI_BIT/RUO/lizhanqing/Software/Python/Python2/Python-2.7.9/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=/hwfssz1/ST_SUPERCELLS/P21Z10200N0125/guanxiangyu/02.apps/miniconda3/envs/python-2.7.13/lib
+#export PYTHONPATH=/ldfssz1/MGI_BIT/RUO/lizhanqing/Software/PyMonitor/V.1.5/lib:/ldfssz1/MGI_BIT/RUO/lizhanqing/Software/Python/Python2/Python-2.7.9/bin/python
+export PYTHONPATH=/hwfssz1/ST_SUPERCELLS/P21Z10200N0125/guanxiangyu/02.apps/miniconda3/envs/python-2.7.13/bin/python
+export DRMAA_LIBRARY_PATH=/opt/gridengine/lib/lx-amd64/libdrmaa.so
+#export PYMONITOR_PY_PATH=/ldfssz1/MGI_BIT/RUO/lizhanqing/Software/PyMonitor/V.1.7/pymonitor.py
+export PYMONITOR_PY_PATH=/hwfssz1/ST_SUPERCELLS/P21Z10200N0125/guanxiangyu/02.apps/PyMonitor/pymonitor.py
+export PYMONITOR_SH_PATH=/hwfssz1/ST_SUPERCELLS/P21Z10200N0125/guanxiangyu/02.apps/PyMonitor/monitor
+#export PYMONITOR_SH_PATH=/ldfssz1/MGI_BIT/RUO/lizhanqing/Software/PyMonitor/V.1.7/monitor
+export PYMONITOR_LOG_PATH=~/.pymonitor.log
+export PYMONITOR_CONF_PATH=~/.pymonitor.conf
+
+if [ "$1" = "cron" ]
+then
+  TASKLIST=`ps -o pid,args -u $USER`
+  CRONTASK=`echo "$TASKLIST" | awk '/pymonitor.py cron/ {print $1}'`
+  if [ -n "$CRONTASK" ]
+  then
+    echo kill -9 $CRONTASK
+  else
+    /hwfssz1/ST_SUPERCELLS/P21Z10200N0125/guanxiangyu/02.apps/miniconda3/envs/python-2.7.13/bin/python2 $PYMONITOR_PY_PATH "$@" 2>$PYMONITOR_LOG_PATH
+  fi
+else
+  /hwfssz1/ST_SUPERCELLS/P21Z10200N0125/guanxiangyu/02.apps/miniconda3/envs/python-2.7.13/bin/python2 $PYMONITOR_PY_PATH "$@"
+fi
