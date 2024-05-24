@@ -1,0 +1,36 @@
+__default__:
+  Q:  
+  P:  
+  L: num_proc=1 -l vf=5G
+  BL: 1
+  N: RT_SpecSim.{rule}.{wildcards.sample}
+  dir: "{wildcards.sample}"
+  # loge: log/{wildcards.sample}.{rule}.e
+  # logo: log/{wildcards.sample}.{rule}.o
+RT_aggregate:
+  Q:  
+  P:  
+  L: num_proc=1 -l vf=5G
+  BL: 1
+  N: RT_aggregate
+  dir: ""
+  # loge: log/RT_aggregate.e
+  # logo: log/RT_aggregate.o
+SpecSim_aggregate:
+  Q:  
+  P:  
+  L: num_proc=1 -l vf=5G
+  BL: 1
+  N: SpecSim_aggregate
+  dir: ""
+  # loge: log/SpecSim_aggregate.e
+  # logo: log/SpecSim_aggregate.o
+RT_SpecSim_aggregate:
+  Q:  
+  P:  
+  L: num_proc=1 -l vf=5G
+  BL: 1
+  N: RT_SpecSim_aggregate
+  dir: ""
+  # loge: log/RT.RT_SpecSim_aggregate.e
+  # logo: log/RT.RT_SpecSim_aggregate.o

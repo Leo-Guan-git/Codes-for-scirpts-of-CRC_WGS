@@ -1,0 +1,32 @@
+selfSet:
+  prefix: HCT116
+  infile:  HCT116.list
+  rawMGFdir: /rawdata/mgf/HCT116
+  outdir: ./RT.SpecSim.result
+  temp:/tmp
+
+bindir:
+  ## spectra similarity
+  base_python:  /software/miniconda3/miniconda3/bin/python
+  pDeep2_python:  /software/miniconda3/envs/pDEEP3/bin/python
+  similarity_python:  /software/miniconda3/miniconda3/envs/matchms_env/bin/python
+  formatRAWmgf:   bin/extract.raw_psm.format.mgf.py
+  createpDeepInput_py:   bin/extract.pDeep_input.fromPSM.py
+  pDeep2_predict_py:  /software/pDeep2/predict.py
+  formatpDeep2mgf:   bin/format.pDeep2.result.py
+  ModifiedCosine_py:   bin/ModifiedCosine.rawVSpDeep.py
+  addSpectraSimilarityScoretoPSM_py:   bin/addSpectraSimilarityScoretoPSM.py
+  
+  ## Retetion time
+  AutoRT_python:  /software/miniconda3/miniconda3/envs/AutoRT_env/bin/python3
+  AutoRT_py:  /software/Proteomics/AutoRT/AutoRT-master/autort.py
+  rtData_py:   bin/create.AutoRT.DeepLC.testData.trainData.py
+  AutoRT_RTdiff_py:   bin/AutoRT.observedVSpredictedRTdiff.py
+  AutoRT_concatRAW_py:   bin/AutoRT.merge.obsVSpredRTdiff.RawPSM.py
+  DeepLC_python:  /software/miniconda3/miniconda3/envs/DeepLC_env/bin/deeplc
+  DeepLC_RTdiff_py:   bin/DeepLC.observedVSpredictedRTdiff.py
+  DeepLC_concatRAW_py:   bin/DeepLC.merge.obsVSpredRTdiff.RawPSM.py
+  mergeAutoRTDeepLC_py:   bin/merge.AutoRTandDeepLC.result.py
+
+  concat_py:   bin/concat.files.py
+  RT_SpecSim_merge_py:   bin/merge.RTandSpectraSimilarity.result.py

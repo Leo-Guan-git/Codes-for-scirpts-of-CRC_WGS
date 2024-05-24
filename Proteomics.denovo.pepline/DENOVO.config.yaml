@@ -1,0 +1,32 @@
+selfSet:
+  infile:  /PM/Denovo/HCT116/HCT116_Denovo.sample.list
+  outdir: ./HCT116_denovo
+  animo_length: 8-15
+  reference: /reference/genome/Homo_sapiens/UniProt/uniprot-filtered-organism_Homo.sapiens_9606_AND_review.fasta.gz
+  temp: /hwfssz5/ST_SUPERCELLS/P21Z10200N0125/tmp
+bindir:
+  base_python:  /software/miniconda3/miniconda3/bin/python
+  concat_py:  /VS_code/bin/Proteomics_denovo_pepline.snakemake.v3/bin/concat.files.py
+  addProtein_py:  /VS_code/bin/Proteomics_denovo_pepline.snakemake.v3/bin/add.mouseProetinID.py
+PepNet:
+  PepNet_python:  /software/miniconda3/miniconda3/envs/PepNet_env/bin/python
+  PepNet_denovo:  /software/PepNet/denovo.py
+  PepNet_model:  /software/PepNet/model.h5
+  PepNet_postpy:  /VS_code/bin/Proteomics_denovo_pepline.snakemake.v3/bin/extract.PepNet.PSM.py
+  # PepNet_thread: 10
+  result: 01.PepNet
+SMSNet:
+  SMSNet_python:  /software/miniconda3/miniconda3/envs/py3.6_tensorflow1.11.0/bin/python
+  SMSNet_denovo:  /software/SMSNet/m-mod/run.py
+  SMSNet_model:  /software/SMSNet/m-mod/smsnet
+  SMSNet_dbsearch:  /software/SMSNet/m-mod/utils_masking/SMSNet_final_database_search.py
+  SMSNet_postpy:  /VS_code/bin/Proteomics_denovo_pepline.snakemake.v3/bin/extract.SMSNet.PSM.py
+  SMSNet_thread: 10
+  result: 02.SMSMNet
+Casanovo:
+  Casanovo_python:  /software/miniconda3/miniconda3/envs/casanovo_3.2.0_env/bin/casanovo
+  Casanovo_config:  /software/Casanovo-3.2.0/casanovo/config.yaml
+  Casanovo_model:  /software/Casanovo-3.0.0/casanovo_massivekb.ckpt
+  Casanovo_postpy:  /VS_code/bin/Proteomics_denovo_pepline.snakemake.v3/bin/extract.Casanovo.PSM.py
+  Casanovo_thread: 10
+  result: 03.Casanovo

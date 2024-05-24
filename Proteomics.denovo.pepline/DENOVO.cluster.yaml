@@ -1,0 +1,33 @@
+__default__:
+  Q: 
+  P:  
+  L: num_proc=1 -l vf=5G
+  BL: 1
+PepNet:
+  L: num_proc=10 -l vf=20G
+  BL: 10
+  loge: snakemake/logs/worklog/{wildcards.sample}.{rule}.e
+  logo: snakemake/logs/worklog/{wildcards.sample}.{rule}.o
+PepNet_post:
+  loge: snakemake/logs/worklog/{wildcards.sample}.{rule}.e
+  logo: snakemake/logs/worklog/{wildcards.sample}.{rule}.o  
+SMSNet:
+  L: num_proc=10 -l vf=20G
+  BL: 10
+  loge: snakemake/logs/worklog/{wildcards.sample}.{rule}.e
+  logo: snakemake/logs/worklog/{wildcards.sample}.{rule}.o
+SMSNet_post:
+  L: num_proc=10 -l vf=20G
+  BL: 10
+  loge: snakemake/logs/worklog/{wildcards.sample}.{rule}.e
+  logo: snakemake/logs/worklog/{wildcards.sample}.{rule}.o  
+Casanovo:
+  Q: 
+  P:  
+  L: num_proc=10 -l vf=20G -l g=4
+  BL: 10
+  loge: snakemake/logs/worklog/{wildcards.sample}.{rule}.e
+  logo: snakemake/logs/worklog/{wildcards.sample}.{rule}.o
+Casanovo_post:
+  loge: snakemake/logs/worklog/{wildcards.sample}.{rule}.e
+  logo: snakemake/logs/worklog/{wildcards.sample}.{rule}.o  
